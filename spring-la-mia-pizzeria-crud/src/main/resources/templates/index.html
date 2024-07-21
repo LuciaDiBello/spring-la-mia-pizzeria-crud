@@ -4,11 +4,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}" />
-		 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">		 
-		 
 <title>ListePizze</title>
 </head>
 
@@ -73,20 +70,24 @@
 						   th:href="@{/index/{id}(id=${pizza.getId()})}">
 						   <i class="bi bi-arrow-right-circle-fill"></i>
 						</a>
-					</td>	  
+						<a th:fragment="button(link)"
+							class="btn btn-primary"
+							th:href="@{/index/insert}">
+							<i class="bi bi-pencil-square"></i>					   
+						</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>
 </section>		
    
 <div th:if="${list.isEmpty()}">
-		<div class="text-center">
-			<h1>La ricerca non ha prodotto risultati</h1>
-		</div>
-</div>
+	<div class="text-center">
+		<h1>La ricerca non ha prodotto risultati</h1>
+	</div>
+   </div>
 
-<script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js}"></script>
-
+ <script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>	 
 

@@ -8,6 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="Pizze")
@@ -22,22 +24,22 @@ public class Pizza{
 	@NotBlank(message="name cannot be null")
 	private String name;
 
-	@Column(name="descrizione", nullable=false)
-	@NotNull(message="descrizione cannot be null")
-	@NotBlank(message="descrizione cannot be null")
+	@Column(name="descrizione", nullable=true)
+	@Size(min = 0, max = 150, message="massimo 150 caratteri")
 	private String descrizione;
 
 	@Column(name="foto", nullable=true)
 	private String foto;
 
 	@Column(name="prezzo", nullable=false)
+	@Positive(message="inserire un numero maggiore di zero")
 	private float prezzo;
 
 	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -61,7 +63,7 @@ public class Pizza{
 		return foto;
 	}
 
-	public void setFoto(String urlPhoto) {
+	public void setFoto(String foto) {
 		this.foto = foto;
 	}
 
@@ -73,5 +75,4 @@ public class Pizza{
 		this.prezzo = prezzo;
 	}
 }
-
 
